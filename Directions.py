@@ -12,27 +12,30 @@ RESOLUTION = 0.05
 latlon_list = get_latlon("test_input.gpx")
 print(latlon_list)
 
-#this Code is the logic behind the directtions
-   
-""" This is code that loops through a list of latlon data and converts to utm """
-"""     
+#this Code is the logic behind the directions
+def ll_to_utm(lat_long):
     utm_points = []
     for point in lat_long:
         utm_conver = utm.from_latlon(point[0], point[1])
         utm_points.append((utm_conver[0], utm_conver[1]))
 
-    # Take a subset of the points to garph
-    tdeltas_graph = []
-    utm_graph_x = []
-    utm_graph_y = []
-    num_p = int(1 / RESOLUTION)
-    for i in range(0, len(utm_points), num_p):
-        tdeltas_graph.append(tdeltas[i])
-        utm_graph_x.append(utm_points[i][0])
-        utm_graph_y.append(utm_points[i][1])
+    return utm_points
 
-    # Graph route
-    scat = plt.scatter(utm_graph_x, utm_graph_y, c=tdeltas_graph)
-    plt.colorbar(scat)
-    plt.show()
-"""
+def bin_search(lat_long):
+    first_ll = lat_long[0]
+    last_ll = lat_long[-1]
+    mid_ll = lat_long[len(lat_long) // 2]
+    
+    """
+    first_address = functionCall(first_ll)
+    last_address = functionCall(last_ll)
+    mid_address = functionCall(mid_ll)
+    
+    first_street = first_address.street
+    last_street = last_address.street
+    mid_address = mid_address.street
+    """
+    
+    
+    
+    
