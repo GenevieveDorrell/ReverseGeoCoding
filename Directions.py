@@ -1,4 +1,4 @@
-import GeoMapping_API
+# import GeoMapping_API
 # Library converting latlon data to universal traverse mercator (UTM)
 import utm
 # Used for visualizing path taken
@@ -10,7 +10,6 @@ from gpx_parser import get_latlon
 RESOLUTION = 0.05
 
 latlon_list = get_latlon("test_input.gpx")
-print(latlon_list)
 
 #this Code is the logic behind the directions
 def ll_to_utm(lat_long):
@@ -49,11 +48,13 @@ def bin_search(test_addresses, turn_points):
     if len(test_addresses) == 2:
         if first_street != last_street:
             turn_points.append(last_street)
-    if first_street != mid_street:
-        bin_search(test_addresses[0 : midpoint+1])
-    if mid_street != last_street:
-        bin_search(test_addresses[midpoint:])
-    
+    else:
+        if first_street != mid_street:
+            bin_search(test_addresses[0 : midpoint+1], turn_points)
+        if mid_street != last_street:
+            bin_search(test_addresses[midpoint:], turn_points)
+    print(turn_points)
+    return turn_points
         
     
     
