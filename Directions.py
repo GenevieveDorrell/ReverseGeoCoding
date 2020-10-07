@@ -35,7 +35,18 @@ def bin_search(lat_long):
     last_street = last_address.street
     mid_address = mid_address.street
     """
+    #TestCode
+    first_street = test_addresses[0]
+    last_street = test_addresses[0]
+    mid_street = test_addresses[len(test_addresses) // 2]
+    if first_street == mid_street:
+        
+    else:
+        bin_search()
+    if mid_street == 
+        
     
     
-    
-    
+def bin_search_test():
+    test_addresses = ["19th", "19th", "Franklin", "Agate"]
+    bin_search(test_addresses)
