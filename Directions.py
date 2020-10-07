@@ -21,12 +21,15 @@ def ll_to_utm(lat_long):
 
     return utm_points
 
-def bin_search(lat_long):
+def bin_search(test_addresses, turn_points):
+    
+    """
+    CHANGE PARAM TO lat_long
+    
     first_ll = lat_long[0]
     last_ll = lat_long[-1]
     mid_ll = lat_long[len(lat_long) // 2]
     
-    """
     first_address = functionCall(first_ll)
     last_address = functionCall(last_ll)
     mid_address = functionCall(mid_ll)
@@ -36,17 +39,26 @@ def bin_search(lat_long):
     mid_address = mid_address.street
     """
     #TestCode
+    
+    midpoint = len(test_addresses) // 2
+    
     first_street = test_addresses[0]
-    last_street = test_addresses[0]
-    mid_street = test_addresses[len(test_addresses) // 2]
-    if first_street == mid_street:
-        
-    else:
-        bin_search()
-    if mid_street == 
+    last_street = test_addresses[-1]
+    mid_street = test_addresses[midpoint]
+    
+    if len(test_addresses) == 2:
+        if first_street != last_street:
+            turn_points.append(last_street)
+    if first_street != mid_street:
+        bin_search(test_addresses[0 : midpoint+1])
+    if mid_street != last_street:
+        bin_search(test_addresses[midpoint:])
+    
         
     
     
 def bin_search_test():
-    test_addresses = ["19th", "19th", "Franklin", "Agate"]
-    bin_search(test_addresses)
+    test_addresses = ["19th", "19th", "Franklin", "Agate", "Agate"]
+    bin_search(test_addresses, ["19th"])
+    
+bin_search_test()
