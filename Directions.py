@@ -23,8 +23,8 @@ def directions(latlon_list):
 def ll_to_utm(point):
     utm_convert = utm.from_latlon(point.lat, point.long)
     return utm_convert
-
-def bin_search(lat_long, turn_points, indices):
+lat_long = get_latlon("test_input.gpx")
+def bin_search(turn_points, indices):
     first = indices[0]
     last = indices[1]
     midpoint = (first + last) // 2
@@ -46,9 +46,9 @@ def bin_search(lat_long, turn_points, indices):
         turn_points.append(last_street)
     else:
         if first_street != mid_street:
-            bin_search(lat_long, turn_points, (first, midpoint))
+            bin_search(turn_points, (first, midpoint))
         if mid_street != last_street:
-            bin_search(lat_long, turn_points, (midpoint, last))
+            bin_search(turn_points, (midpoint, last))
     return turn_points
         
 def distance(point1, point2):
@@ -56,7 +56,6 @@ def distance(point1, point2):
     utm2 = ll_to_utm(point2)
     
     dist = sqrt((point2[0] - point1[0]) ** 2 + (point2[1] - point1[1]) ** 2)
-    
     return dist
     
 def distance_processor(turn_points):
@@ -75,10 +74,10 @@ def direction_processor(lat_long, turn_points):
     return None
     
 def bin_search_test():
-    test_ll = get_latlon("test_input.gpx")
-    point1 = getpoint(test_ll[0][0], test_ll[0][1], 0)
     
-    turn_points = bin_search(test_ll, [point1], (0, len(test_ll) - 1))
+    point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
+    
+    turn_points = bin_search([point1], (0, len(lat_long) - 1))
     #print(turn_points)
 
     
