@@ -41,7 +41,6 @@ def bin_search(lat_long, turn_points, indices):
     first_address = getpoint(first_ll[0], first_ll[1], first)
     last_address = getpoint(last_ll[0], last_ll[1], last)
     mid_address = getpoint(mid_ll[0], mid_ll[1], midpoint)
-    """
     
     first_street = first_address.street
     last_street = last_address.street
