@@ -8,6 +8,16 @@ from math import sqrt
 
 from gpx_parser import get_latlon
 
+class direction:
+    def __init__(self, fisrt_point, second_point, direction, distance, time):  
+        self.fisrt_point = fisrt_point
+        self.second_point = second_point
+        self.direction = direction
+        self.time = time
+
+    def __repr__(self):
+        return "direction = % s\ndistance = % s\ntime = % s\n" % (self.direction, self.distance, self.time)
+
 # What percentage of points to graph 
 RESOLUTION = 0.05
 
