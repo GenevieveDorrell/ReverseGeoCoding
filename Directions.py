@@ -19,18 +19,18 @@ def ll_to_utm(point):
     utm_convert = utm.from_latlon(point.lat, point.long)
     return utm_convert
 
-def bin_search(lat_long, turn_points):
+def bin_search(lat_long, turn_points, indices):
+    first = indices[0]
+    last = indices[1]
+    midpoint = (first + last) // 2
     
-    midpoint = len(lat_long) // 2
-    
-    first_ll = lat_long[0]
-    last_ll = lat_long[-1]
+    first_ll = lat_long[first]
+    last_ll = lat_long[last]
     mid_ll = lat_long[midpoint]
     
-    """
-    first_address = functionCall(first_ll)
-    last_address = functionCall(last_ll)
-    mid_address = functionCall(mid_ll)
+    first_address = getpoint(first_ll[0], first_ll[1], first)
+    last_address = getpoint(last_ll[0], last_ll[1], last)
+    mid_address = getpoint(mid_ll[0], mid_ll[1], midpoint)
     """
     
     first_street = first_address.street
@@ -41,9 +41,9 @@ def bin_search(lat_long, turn_points):
         turn_points.append(last_street)
     else:
         if first_street != mid_street:
-            bin_search(lat_long[0 : midpoint+1], turn_points)
+            bin_search(lat_long, turn_points, (first, midpoint))
         if mid_street != last_street:
-            bin_search(lat_long[midpoint:], turn_points)
+            bin_search(lat_long, turn_points, (midpoint, last))
     return turn_points
         
 def distance(point1, point2):
