@@ -11,7 +11,7 @@ from gpx_parser import get_latlon
 # What percentage of points to graph 
 RESOLUTION = 0.05
 
-def directions(latlon_list)
+def directions(latlon_list):
     #bin_search(latlon_lit, ...)
 
 #this Code is the logic behind the directions
