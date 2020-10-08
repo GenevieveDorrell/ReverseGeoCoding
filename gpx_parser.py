@@ -5,7 +5,7 @@ import gpxpy
 import gpxpy.gpx
 
 def get_latlon(input_f): 
-    gpx_f = open('input', 'r')
+    gpx_f = open(input_f, 'r')
     gpx = gpxpy.parse(gpx_f)
 
     # "0" point to calculate time since initial point
