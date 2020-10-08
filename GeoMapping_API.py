@@ -8,6 +8,7 @@ class address:
         self.lat = lat
         self.lon = lon
         self.index = index
+
     def __repr__(self):
         return "street = % s\nlat = % s\nlon = % s\nIndex = % s\n" % (self.street,self.lat,self.lon,self.index)
 
@@ -23,6 +24,6 @@ def getpoint(lat, lon, index):
     print(point)
     return point
 
-#getpoint(44.039160,-123.079530)
+getpoint(44.039160,-123.079530, 0)
 
 
