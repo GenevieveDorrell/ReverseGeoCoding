@@ -53,7 +53,6 @@ def bin_search(test_addresses, turn_points):
             bin_search(test_addresses[0 : midpoint+1], turn_points)
         if mid_street != last_street:
             bin_search(test_addresses[midpoint:], turn_points)
-    print(turn_points)
     return turn_points
         
     
