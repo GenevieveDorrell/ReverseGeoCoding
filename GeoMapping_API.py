@@ -24,6 +24,6 @@ def getpoint(lat, lon, index):
     print(point)
     return point
 
-getpoint(44.039160,-123.079530, 0)
+#getpoint(44.039160,-123.079530, 0)
 
 
