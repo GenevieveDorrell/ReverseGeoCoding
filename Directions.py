@@ -41,9 +41,8 @@ def bin_search(lat_long, turn_points, indices):
     last_street = last_address.street
     mid_street = mid_address.street
     
-    print(first_street, last_street)
     if (last-first==1) and first_street != last_street:
-        turn_points.append(last_street)
+        turn_points.append(last_address)
     else:
         if first_street != mid_street:
             bin_search(lat_long, turn_points, (first, midpoint))
@@ -75,11 +74,11 @@ def direction_processor(lat_long, turn_points):
     return None
     
 def bin_search_test():
-    test_ll = get_latlon("test_input.gpx")
+    test_ll = get_latlon("test_input_short.gpx")
     point1 = getpoint(test_ll[0][0], test_ll[0][1], 0)
     
     turn_points = bin_search(test_ll, [point1], (0, len(test_ll) - 1))
-    #print(turn_points)
+    print(turn_points)
 
     
 bin_search_test()
