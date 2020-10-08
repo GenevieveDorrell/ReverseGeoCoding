@@ -18,9 +18,6 @@ class direction:
     def __repr__(self):
         return "direction = % s\ndistance = % s\ntime = % s\n" % (self.direction, self.distance, self.time)
 
-# What percentage of points to graph 
-RESOLUTION = 0.05
-
 def directions(latlon_list):
     #bin_search(latlon_lit, ...)
 
