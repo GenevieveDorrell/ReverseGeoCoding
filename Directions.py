@@ -21,8 +21,8 @@ class direction:
 # What percentage of points to graph 
 RESOLUTION = 0.05
 
-def directions(latlon_list)
-    #bin_search(latlon_lit, ...)
+def directions(latlon_list):
+    pass
 
 #this Code is the logic behind the directions
 def ll_to_utm(point):
@@ -79,8 +79,11 @@ def direction_processor(lat_long, turn_points):
     return None
     
 def bin_search_test():
-    test_addresses = ["19th", "19th", "Franklin", "Agate", "Agate"]
-    bin_search(test_addresses, ["19th"])
+    test_ll = get_latlon("test_input.gpx")
+    point1 = getpoint(test_ll[0][0], test_ll[0][1], 0)
+    
+    turn_points = bin_search(test_ll, [point1], (0, len(test_ll) - 1))
+    print(turn_points)
 
     
 bin_search_test()
