@@ -1,8 +1,6 @@
-# import GeoMapping_API
+from GeoMapping_API import getpoint
 # Library converting latlon data to universal traverse mercator (UTM)
 import utm
-# Used for visualizing path taken
-import matplotlib.pyplot as plt
 
 from math import sqrt
 
@@ -43,7 +41,8 @@ def bin_search(lat_long, turn_points, indices):
     last_street = last_address.street
     mid_street = mid_address.street
     
-    if len(lat_long) == 2 and first_street != last_street:
+    print(first_street, last_street)
+    if (last-first==1) and first_street != last_street:
         turn_points.append(last_street)
     else:
         if first_street != mid_street:
@@ -80,7 +79,7 @@ def bin_search_test():
     point1 = getpoint(test_ll[0][0], test_ll[0][1], 0)
     
     turn_points = bin_search(test_ll, [point1], (0, len(test_ll) - 1))
-    print(turn_points)
+    #print(turn_points)
 
     
 bin_search_test()

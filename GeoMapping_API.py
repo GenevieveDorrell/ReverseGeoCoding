@@ -21,7 +21,6 @@ def getpoint(lat, lon, index):
     parsed = r.text.split(',')
     street = parsed[5].split(' ', 1)
     point = address(street[1], lat, lon, index)
-    print(point)
     return point
 
 #getpoint(44.039160,-123.079530, 0)
