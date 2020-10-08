@@ -1,5 +1,3 @@
-import Directions
-
 def cli():
     inputf = ""
     while(inputf != "exit"):
