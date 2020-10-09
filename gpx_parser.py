@@ -5,7 +5,12 @@ import gpxpy
 import gpxpy.gpx
 
 def get_latlon(input_f): 
-    gpx_f = open(input_f, 'r')
+    try:
+        gpx_f = open(input_f, 'r')
+    except FileNotFoundError:
+        print("Could not find file " + input_f + " - exiting...")
+        exit(1)
+        
     gpx = gpxpy.parse(gpx_f)
 
     # "0" point to calculate time since initial point

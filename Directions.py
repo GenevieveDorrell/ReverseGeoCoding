@@ -14,23 +14,19 @@ class direction:
 
     def __repr__(self):
         return "street = % s\ndirection = % s\ndistance = % s\n" % (self.street, self.direction, self.distance)
-lat_long = get_latlon("test_input_shortpi.gpx")
+
 
 def directions(lat_long):
     point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
-    #print(lat_long)    
-    turn_points = bin_search([point1], (0, len(lat_long) - 1))
+    turn_points = bin_search(lat_long, [point1], (0, len(lat_long) - 1))
     print(turn_points)
-    pass
 
-#this Code is the logic behind the directions
+# This Code is the logic behind the directions
 def ll_to_utm(point):
     utm_convert = utm.from_latlon(point.lat, point.long)
     return utm_convert
 
-
-
-def bin_search(turn_points, indices):
+def bin_search(lat_long, turn_points, indices):
     first = indices[0]
     last = indices[1]
     midpoint = (first + last) // 2
@@ -51,9 +47,9 @@ def bin_search(turn_points, indices):
         turn_points.append(last_address)
     else:
         if first_street != mid_street:
-            bin_search(turn_points, (first, midpoint))
+            bin_search(lat_long, turn_points, (first, midpoint))
         if mid_street != last_street:
-            bin_search(turn_points, (midpoint, last))
+            bin_search(lat_long, turn_points, (midpoint, last))
     return turn_points
         
 def distance(point1, point2):
@@ -65,7 +61,6 @@ def distance(point1, point2):
     
 def distance_processor(turn_points):
     distances = []
-    
     for point_index in range(len(turn_points) - 1):
         point1 = turn_points[point_index]
         point2 = turn_points[point_index + 1]
@@ -77,14 +72,7 @@ def distance_processor(turn_points):
     
 def direction_processor(lat_long, turn_points):
     return None
-    
-def bin_search_test():
-    
-    point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
-    #print(lat_long)
-    
-    turn_points = bin_search([point1], (0, len(lat_long) - 1))
-    print(turn_points)
 
-    
-bin_search_test()
+if __name__ == "__main__":
+    lat_long = get_latlon("tests/test_input_short.gpx")
+    directions(lat_long)

@@ -28,6 +28,6 @@ def getpoint(lat, lon, index):
         print('API is out of credits')
         return None
 
-print(getpoint(44.039160,-123.079530, 0))
+
 
 
