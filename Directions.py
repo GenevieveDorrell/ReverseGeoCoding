@@ -26,7 +26,7 @@ def directions(lat_long):
 
 # This Code is the logic behind the directions
 def ll_to_utm(point):
-    utm_convert = utm.from_latlon(point.lat, point.long)
+    utm_convert = utm.from_latlon(point.lat, point.lon)
     return utm_convert
 
 def bin_search(lat_long, turn_points, indices):
