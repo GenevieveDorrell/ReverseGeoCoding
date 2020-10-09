@@ -4,10 +4,12 @@ import utm
 
 from math import sqrt
 
+from numpy import arccos
+
 from gpx_parser import get_latlon
 
 class direction:
-    def __init__(self, street, direction, distance):  
+    def __init__(self, street, direction, distance):
         self.street = street
         self.direction = direction
         self.distance = distance
@@ -15,11 +17,12 @@ class direction:
     def __repr__(self):
         return "street = % s\ndirection = % s\ndistance = % s\n" % (self.street, self.direction, self.distance)
 
-
 def directions(lat_long):
-    point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
+    point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)   
     turn_points = bin_search(lat_long, [point1], (0, len(lat_long) - 1))
-    print(turn_points)
+    distances = distance_processor(turn_points)
+    directions = direction_processor(lat_long, turn_points, distances)
+    print(directions)
 
 # This Code is the logic behind the directions
 def ll_to_utm(point):
@@ -69,9 +72,39 @@ def distance_processor(turn_points):
         distances.append(dist)
         
     return distances
+
+def direction_calc(lat_long, point):
+    index_behind = point.index - 10
+    index_ahead = point.index + 10
     
-def direction_processor(lat_long, turn_points):
-    return None
+    point_behind = getpoint(lat_long[index_behind][0], lat_long[index_behind][1], index_behind)
+    point_ahead = getpoint(lat_long[index_ahead][0], lat_long[index_ahead][1], index_ahead)
+    
+    utm_behind = ll_to_utm(point_behind)
+    utm_current = ll_to_utm(point)
+    utm_ahead = ll_to_utm(point_ahead)
+    
+    dir = ((utm_current[0]-utm_behind[0]) * (utm_ahead[1]-utm_behind[1])) - ((utm_current[1] - utm_behind[1]) * (utm_ahead[0]-utm_behind[0]))
+    
+    if dir > 0.01:
+        return "left"
+    elif dir < -0.01:
+        return "right"
+    else:
+        return "straight"    
+    
+def direction_processor(lat_long, turn_points, distances):
+    directions = []
+    direction1 = direction(turn_points[0].street, "start", None)
+    directions.append(direction1)
+    
+    for i in range(1, len(turn_points)):
+        dir = direction_calc(lat_long, turn_points[i])
+        direction_current = direction(turn_points[i].street, dir, distances[i-1])
+        
+        directions.append(direction_current)
+    
+    return directions
 
 if __name__ == "__main__":
     lat_long = get_latlon("tests/test_input_short.gpx")
