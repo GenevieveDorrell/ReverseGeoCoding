@@ -7,14 +7,13 @@ from math import sqrt
 from gpx_parser import get_latlon
 
 class direction:
-    def __init__(self, fisrt_point, second_point, direction, distance, time):  
-        self.fisrt_point = fisrt_point
-        self.second_point = second_point
+    def __init__(self, street, direction, distance):  
+        self.street = street
         self.direction = direction
-        self.time = time
+        self.distance = distance
 
     def __repr__(self):
-        return "direction = % s\ndistance = % s\ntime = % s\n" % (self.direction, self.distance, self.time)
+        return "street = % s\ndirection = % s\ndistance = % s\n" % (self.street, self.direction, self.distance)
 lat_long = get_latlon("test_input_shortpi.gpx")
 
 def directions(lat_long):
