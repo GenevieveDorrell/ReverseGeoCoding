@@ -15,15 +15,22 @@ class direction:
 
     def __repr__(self):
         return "direction = % s\ndistance = % s\ntime = % s\n" % (self.direction, self.distance, self.time)
+lat_long = get_latlon("test_input_shortpi.gpx")
 
-def directions(latlon_list):
+def directions(lat_long):
+    point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
+    #print(lat_long)    
+    turn_points = bin_search([point1], (0, len(lat_long) - 1))
+    print(turn_points)
     pass
 
 #this Code is the logic behind the directions
 def ll_to_utm(point):
     utm_convert = utm.from_latlon(point.lat, point.long)
     return utm_convert
-lat_long = get_latlon("test_input.gpx")
+
+
+
 def bin_search(turn_points, indices):
     first = indices[0]
     last = indices[1]
@@ -75,9 +82,10 @@ def direction_processor(lat_long, turn_points):
 def bin_search_test():
     
     point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
+    #print(lat_long)
     
     turn_points = bin_search([point1], (0, len(lat_long) - 1))
-    #print(turn_points)
+    print(turn_points)
 
     
 bin_search_test()

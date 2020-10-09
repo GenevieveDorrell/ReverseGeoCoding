@@ -1,6 +1,8 @@
 
 import User_interface
 import gpx_parser
+import Directions
+
 def main():
     lat_lon = get_latlon(cli())
     
