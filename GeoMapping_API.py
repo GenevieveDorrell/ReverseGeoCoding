@@ -4,7 +4,7 @@ import requests
 #account balance query
 #
 class address:
-    def __init__(self, street, lat, lon, index):  
+    def __init__(self, street, lat, lon, index):
         self.street = street
         self.lat = lat
         self.lon = lon
@@ -19,15 +19,11 @@ apikey = '	4fec299ee59b4b2b8a38389b3d91e249'
 def getpoint(lat, lon, index):
     variables = {'lon': lon, 'lat': lat, 'format': 'csv', 'apikey': apikey, 'notStore': 'false', 'includeHeader': 'false', 'version': '4.10'}
     r = requests.get(url, params=variables)
-    if(r.text != ''):        
-        parsed = r.text.split(',')        
+    if(r.text != ''):
+        parsed = r.text.split(',')
         street = parsed[5].split(' ', 1)
         point = address(street[1], lat, lon, index)
         return point
     else:
         print('API is out of credits')
-        return None
-
-
-
-
+        exit(1)
