@@ -4,13 +4,13 @@
 import gpxpy
 import gpxpy.gpx
 
-def get_latlon(input_f): 
+def get_latlon(input_f):
     try:
         gpx_f = open(input_f, 'r')
     except FileNotFoundError:
         print("Could not find file " + input_f + " - exiting...")
         exit(1)
-        
+
     gpx = gpxpy.parse(gpx_f)
 
     # "0" point to calculate time since initial point
@@ -25,8 +25,7 @@ def get_latlon(input_f):
             for point in segment.points:
                 lat_long.append((point.latitude, point.longitude))
                 tdeltas.append((point.time - time_1).total_seconds())
-                
+
+    # Reduce resolution of data to increase processing speed
+    lat_long = lat_long[0::20]
     return lat_long
-
-
-    

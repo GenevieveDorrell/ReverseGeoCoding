@@ -108,5 +108,5 @@ def direction_processor(lat_long, turn_points, distances):
     return directions
 
 if __name__ == "__main__":
-    lat_long = get_latlon("tests/test_input_short.gpx")
+    lat_long = get_latlon("tests/test_input.gpx")
     directions(lat_long)
