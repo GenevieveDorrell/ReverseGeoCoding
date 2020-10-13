@@ -1,6 +1,39 @@
-from flask import Flask, render_template
-app = Flask(__name__)
+import os
+from flask import Flask, render_template, request, flash
+from werkzeug.utils import secure_filename
 
-@app.route('/')
-def todo():
+
+UPLOAD_FOLDER = 'uploads'
+ALLOWED_EXTENSIONS = {'gpx'}
+
+
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+@app.route('/', methods=['POST', 'GET'])
+def home():
+    if request.method == 'POST':
+        print('yoooo')
+        flash('You were successfully logged in')
+        print(request.files)
+        if 'file' in request.files:
+            file = request.files['file']
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                #latlon = get_latlon("uploads\\' + file.filename)
+                #directions = directions(latlon)
+                #print(directions)
+            else:
+                print('wrong file extention')
     return render_template('home.html')
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route('/getDirections', methods=['POST', 'GET'])    
+def getDirections():
+    return render_template('directions.html')

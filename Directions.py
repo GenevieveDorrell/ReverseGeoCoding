@@ -15,7 +15,7 @@ class direction:
         self.distance = distance
 
     def __repr__(self):
-        return "street = % s\ndirection = % s\ndistance = % s\n" % (self.street, self.direction, self.distance)
+        return "street = % s\ndirection =ma % s\ndistance = % s\n" % (self.street, self.direction, self.distance)
 
 def directions(lat_long):
     point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
@@ -23,6 +23,7 @@ def directions(lat_long):
     distances = distance_processor(turn_points)
     directions = direction_processor(lat_long, turn_points, distances)
     print(directions)
+    return directions
 
 # This Code is the logic behind the directions
 def ll_to_utm(point):
@@ -87,11 +88,11 @@ def direction_calc(lat_long, point):
     dir = ((utm_current[0]-utm_behind[0]) * (utm_ahead[1]-utm_behind[1])) - ((utm_current[1] - utm_behind[1]) * (utm_ahead[0]-utm_behind[0]))
 
     if dir > 0.01:
-        return "left"
+        return "turn left"
     elif dir < -0.01:
-        return "right"
+        return "turn right"
     else:
-        return "straight"
+        return "go straight"
 
 def direction_processor(lat_long, turn_points, distances):
     directions = []
