@@ -1,9 +1,10 @@
 import os
 from flask import Flask, render_template, request, flash
 from werkzeug.utils import secure_filename
+from gpx_parser import get_latlon
+from Directions import directions
 
-
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = 'uploads\\'
 ALLOWED_EXTENSIONS = {'gpx'}
 
 
@@ -14,19 +15,19 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 @app.route('/', methods=['POST', 'GET'])
 def home():
     if request.method == 'POST':
-        print('yoooo')
-        flash('You were successfully logged in')
         print(request.files)
         if 'file' in request.files:
             file = request.files['file']
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                #latlon = get_latlon("uploads\\' + file.filename)
-                #directions = directions(latlon)
-                #print(directions)
+
+                latlon = get_latlon((UPLOAD_FOLDER + file.filename))
+                directionsList = directions(latlon)
+                for direction in directionsList:
+                    flash(direction)
             else:
-                print('wrong file extention')
+                flash('Please Upload a .gpx type file')
     return render_template('home.html')
 
 def allowed_file(filename):
