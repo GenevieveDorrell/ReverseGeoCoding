@@ -21,7 +21,7 @@ def home():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
+                flash('we are working on your route please give us a second :)')
                 latlon = get_latlon((UPLOAD_FOLDER + file.filename))
                 directionsList = directions(latlon)
                 for direction in directionsList:
