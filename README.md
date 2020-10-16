@@ -1,4 +1,37 @@
 # Reverse Geocoding 
-We have created a basic python application that uses the https://geoservices.tamu.edu/ API reverse geocoding service to turn your gpx files into verbal dirctions. 
-## here is notation for a smaller header
-* here is a bullit point
+
+## Info-
+Code Developed for reverse geocoding applications. This entails converting gps points into a cue sheet of directions. 
+
+## Usage- 
+TODO
+
+## Requirements-
+TODO
+
+## Setup-
+TODO
+
+## Files & Directories-
+*directions.py -
+
+*geomapping_API.py -
+
+*gpx_parser.py -
+
+*user_interface.py -
+
+*webApp.py -
+
+*static/-
+
+*templates/-
+
+*uploads/- 
+
+*tests/-
+
+
+
+## Acknowledgments-
+This project uses reverse geocoding serveces from https://geoservices.tamu.edu/ API to convert latlon data to street addresses. 
