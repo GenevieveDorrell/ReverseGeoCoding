@@ -13,24 +13,24 @@ TODO
 TODO
 
 ## Files & Directories-
-*directions.py
+* directions.py
 
-*geomapping_API.py
+* geomapping_API.py
 
 * gpx_parser.py 
-- Parses a gpx input file and returns the latlon data in a list
+-Parses a gpx input file and returns the latlon data in a list
 
-*user_interface.py
+* user_interface.py
 
-*webApp.py
+* webApp.py
 
-*static/
+* static/
 
-*templates/
+* templates/
 
-*uploads/
+* uploads/
 
-*tests/
+* tests/
 
 ## Acknowledgments-
 This project uses reverse geocoding serveces from https://geoservices.tamu.edu/ API to convert latlon data to street addresses. 
