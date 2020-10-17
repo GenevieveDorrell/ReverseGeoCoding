@@ -68,6 +68,7 @@ def bin_search(turn_points, indices):
             bin_search(turn_points, (midpoint, last))
     return turn_points
 
+""" Calculates the euclidean distance between two points """
 def distance(point1, point2):
     utm1 = ll_to_utm(point1)
     utm2 = ll_to_utm(point2)
@@ -75,6 +76,7 @@ def distance(point1, point2):
     dist = sqrt((point2[0] - point1[0]) ** 2 + (point2[1] - point1[1]) ** 2)
     return dist
 
+""" Calculates the distance between all adjacent points in cue sheet """
 def distance_processor(turn_points):
     distances = []
     for point_index in range(len(turn_points) - 1):
@@ -86,6 +88,7 @@ def distance_processor(turn_points):
 
     return distances
 
+""" Calculates the turn direction between two points """
 def direction_calc(lat_long, point):
     index_behind = point.index - 10
     index_ahead = point.index + 10
@@ -106,6 +109,7 @@ def direction_calc(lat_long, point):
     else:
         return "go straight"
 
+""" Calculates the turn direction between adjacent points in cue sheet """
 def direction_processor(lat_long, turn_points, distances):
     directions = []
     direction1 = direction(turn_points[0].street, "start", None)
