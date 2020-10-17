@@ -1,4 +1,4 @@
-from GeoMapping_API import getpoint
+from geoMapping_API import getpoint
 # Library converting latlon data to universal traverse mercator (UTM)
 import utm
 
@@ -17,20 +17,32 @@ class direction:
     def __repr__(self):
         return "street = % s\ndirection =ma % s\ndistance = % s\n" % (self.street, self.direction, self.distance)
 
-def directions(lat_long):
+def directions(file_n):
+    # Create a global variable so that it doesn't need to be passed into recursive call
+    global lat_long
+    lat_long = get_latlon(file_n)
+    # First diection in cue sheet
     point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
-    turn_points = bin_search(lat_long, [point1], (0, len(lat_long) - 1))
+    print(point1)
+    # Calculates other directinos in the cue sheet
+    turn_points = bin_search([point1], (0, len(lat_long) - 1))
+    # Calculates distances driven on each road
     distances = distance_processor(turn_points)
+    # Calculates direction turned at each road change
     directions = direction_processor(lat_long, turn_points, distances)
-    print(directions)
+    #print(directions)
     return directions
 
 # This Code is the logic behind the directions
+
+""" Converts latlon data to utm data to calculate distances """
 def ll_to_utm(point):
     utm_convert = utm.from_latlon(point.lat, point.lon)
     return utm_convert
 
-def bin_search(lat_long, turn_points, indices):
+""" Performs a binary search on the lat/long list to find the points where
+    streets change """
+def bin_search(turn_points, indices):
     first = indices[0]
     last = indices[1]
     midpoint = (first + last) // 2
@@ -51,9 +63,9 @@ def bin_search(lat_long, turn_points, indices):
         turn_points.append(last_address)
     else:
         if first_street != mid_street:
-            bin_search(lat_long, turn_points, (first, midpoint))
+            bin_search(turn_points, (first, midpoint))
         if mid_street != last_street:
-            bin_search(lat_long, turn_points, (midpoint, last))
+            bin_search(turn_points, (midpoint, last))
     return turn_points
 
 def distance(point1, point2):
@@ -108,5 +120,4 @@ def direction_processor(lat_long, turn_points, distances):
     return directions
 
 if __name__ == "__main__":
-    lat_long = get_latlon("tests/test_input.gpx")
-    directions(lat_long)
+    directions("tests/test_input.gpx")
