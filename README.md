@@ -35,6 +35,7 @@ TODO
 * templates/
 
 * uploads/
+-Contains gpx files that the user uploads for duration of reverse geocoding process.
 
 * tests/
 
