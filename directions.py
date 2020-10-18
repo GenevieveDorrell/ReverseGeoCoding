@@ -17,9 +17,10 @@ class direction:
     def __repr__(self):
         return "street = % s\ndirection =ma % s\ndistance = % s\n" % (self.street, self.direction, self.distance)
 
-def directions(lat_long):
+def directions(lat_lon):
     # Create a global variable so that it doesn't need to be passed into recursive call
-    global lat_long
+    global lat_lon
+    lat_long = lat_lon
     # First diection in cue sheet
     point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
     print(point1)
