@@ -19,7 +19,7 @@ class direction:
 
 def directions(lat_lon):
     # Create a global variable so that it doesn't need to be passed into recursive call
-    global lat_lon
+    global lat_long
     lat_long = lat_lon
     # First diection in cue sheet
     point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
