@@ -33,7 +33,7 @@ def directions(file_n):
     #print(directions)
     return directions
 
-# This Code is the logic behind the directions
+ 
 
 """ Converts latlon data to utm data to calculate distances """
 def ll_to_utm(point):
