@@ -17,10 +17,9 @@ class direction:
     def __repr__(self):
         return "street = % s\ndirection =ma % s\ndistance = % s\n" % (self.street, self.direction, self.distance)
 
-def directions(file_n):
+def directions(lat_long):
     # Create a global variable so that it doesn't need to be passed into recursive call
     global lat_long
-    lat_long = get_latlon(file_n)
     # First diection in cue sheet
     point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
     print(point1)
@@ -33,7 +32,7 @@ def directions(file_n):
     #print(directions)
     return directions
 
- 
+
 
 """ Converts latlon data to utm data to calculate distances """
 def ll_to_utm(point):
@@ -124,4 +123,5 @@ def direction_processor(lat_long, turn_points, distances):
     return directions
 
 if __name__ == "__main__":
-    directions("tests/test_input.gpx")
+    latlon = get_latlon("tests/test_input.gpx")
+    directions(latlon)
