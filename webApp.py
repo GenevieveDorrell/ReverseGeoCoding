@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request, flash
 from werkzeug.utils import secure_filename
 from gpx_parser import get_latlon
-from Directions import directions
+from directions import get_directions
 
 UPLOAD_FOLDER = 'uploads\\'
 ALLOWED_EXTENSIONS = {'gpx'}
@@ -23,8 +23,8 @@ def home():
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 flash('we are working on your route please give us a second :)')
                 latlon = get_latlon((UPLOAD_FOLDER + file.filename))
-                directionsList = directions(latlon)
                 flash('okay here are your directions happy travels')
+                directionsList = get_directions(latlon)
                 for direction in directionsList:
                     flash(direction)
             else:
@@ -36,6 +36,6 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route('/getDirections', methods=['POST', 'GET'])    
+@app.route('/getDirections', methods=['POST', 'GET'])
 def getDirections():
     return render_template('directions.html')
