@@ -13,7 +13,7 @@ class address:
     def __repr__(self):
         return "street = % s\nlat = % s\nlon = % s\nIndex = % s\n" % (self.street,self.lat,self.lon,self.index)
 
-url = "https://geoservices.tamu.edu/Services/RevmaerseGeocoding/WebService/v04_01/HTTP/default.aspx"
+url = "https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/HTTP/default.aspx"
 apikey = '	4fec299ee59b4b2b8a38389b3d91e249'
 
 def getpoint(lat, lon, index):
@@ -23,7 +23,10 @@ def getpoint(lat, lon, index):
         parsed = r.text.split(',')
         street = parsed[5].split(' ', 1)
         point = address(street[1], lat, lon, index)
+        #print(r.url)
         return point
     else:
         print('API is out of credits')
         exit(1)
+
+#print(getpoint(44.587662, -123.256691, 0))

@@ -24,6 +24,7 @@ def home():
                 flash('we are working on your route please give us a second :)')
                 latlon = get_latlon((UPLOAD_FOLDER + file.filename))
                 directionsList = directions(latlon)
+                flash('okay here are your directions happy travels')
                 for direction in directionsList:
                     flash(direction)
             else:

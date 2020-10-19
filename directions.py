@@ -22,6 +22,7 @@ def directions(lat_lon):
     global lat_long
     lat_long = lat_lon
     # First diection in cue sheet
+    print(lat_long[0][0], lat_long[0][1])
     point1 = getpoint(lat_long[0][0], lat_long[0][1], 0)
     print(point1)
     # Calculates other directinos in the cue sheet
