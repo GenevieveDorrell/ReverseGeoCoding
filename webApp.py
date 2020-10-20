@@ -14,6 +14,8 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
+    flash('Upload a .gpx file')
+    flash('It may take us a second to calucalte your route so please be patient')
     if request.method == 'POST':
         print(request.files)
         if 'file' in request.files:
@@ -21,6 +23,7 @@ def home():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
                 flash('we are working on your route please give us a second :)')
                 latlon = get_latlon((UPLOAD_FOLDER + "/" + file.filename))
                 flash('okay here are your directions happy travels')
