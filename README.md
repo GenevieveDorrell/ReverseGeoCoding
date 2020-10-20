@@ -7,15 +7,17 @@ Code Developed for reverse geocoding applications. This entails converting gps p
 TODO
 
 ## Requirements-
-The requirements for this project include:
-- requests
+You must have python and pip preinstalled on your computer for the build scripts to work. Our web aplication will then install the venv packsge and then install these other third party pachages within the environment. 
 - utm
 - gpxpy
 - math
 - numpy
+- flask
 
 ## Setup-
 TODO
+run the windowBuild.bat or UnixBuild.bash depending on your OS. 
+Then run the run 
 
 ## Files & Directories-
 * directions.py

@@ -142,12 +142,18 @@ def direction_calc(address):
 
     address_behind = getaddress(lat_long[index_behind][0], lat_long[index_behind][1], index_behind)
     address_ahead = getaddress(lat_long[index_ahead][0], lat_long[index_ahead][1], index_ahead)
-
+    
+    
     utm_behind = ll_to_utm(address_behind)
     utm_current = ll_to_utm(address)
     utm_ahead = ll_to_utm(address_ahead)
+    
 
     dir = ((utm_current[0]-utm_behind[0]) * (utm_ahead[1]-utm_behind[1])) - ((utm_current[1] - utm_behind[1]) * (utm_ahead[0]-utm_behind[0]))
+    twoRoads = address_behind.street.split(';')
+    if len(twoRoads) > 1: #checkes to see if change is just from street name change
+        if address.street in twoRoads:
+            return "Continue onto"           
     if dir > 1:
         return "Turn left"
     elif dir < -1:

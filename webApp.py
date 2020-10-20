@@ -30,6 +30,7 @@ def home():
                 directionsList = get_directions(latlon)
                 for direction in directionsList:
                     flash(direction)
+                os.remove((UPLOAD_FOLDER + "/" + file.filename))
             else:
                 flash('Please Upload a .gpx type file')
     return render_template('home.html')
