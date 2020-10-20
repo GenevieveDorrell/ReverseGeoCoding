@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 from gpx_parser import get_latlon
 from directions import get_directions
 
-UPLOAD_FOLDER = 'uploads\\'
+UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'gpx'}
 
 
@@ -22,7 +22,7 @@ def home():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 flash('we are working on your route please give us a second :)')
-                latlon = get_latlon((UPLOAD_FOLDER + file.filename))
+                latlon = get_latlon((UPLOAD_FOLDER + "/" + file.filename))
                 flash('okay here are your directions happy travels')
                 directionsList = get_directions(latlon)
                 for direction in directionsList:

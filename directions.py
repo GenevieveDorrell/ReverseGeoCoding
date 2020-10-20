@@ -17,8 +17,6 @@ class direction:
         else:
             self.distance = 0.0
 
-
-
     def __repr__(self):
         return "{} on {} - {}km".format(self.direction, self.street, self.distance)
 
