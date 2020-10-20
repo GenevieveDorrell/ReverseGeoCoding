@@ -1,4 +1,4 @@
-from openMap_API import getaddress
+from openMap_API import getaddress, get_apikey
 # Library converting latlon data to universal traverse mercator (UTM)
 import utm
 
@@ -20,15 +20,19 @@ class direction:
     def __repr__(self):
         return "{} on {} - {}km".format(self.direction, self.street, self.distance)
 
+
+
 def get_directions(lat_lon):
     # Create a global variable so that it doesn't need to be passed into recursive call
     global lat_long
+    global apikey 
+    apikey = get_apikey()
     lat_long = lat_lon
     # First diection in cue sheet
-    address1 = getaddress(lat_long[0][0], lat_long[0][1], 0)
+    address1 = getaddress(lat_long[0][0], lat_long[0][1], 0, apikey)
     # Calculates other directions in the cue sheet
     turn_points = bin_search([address1], (0, len(lat_long) - 1))
-    turn_points.append(getaddress(lat_long[-1][0], lat_long[-1][1], len(lat_long) - 1))
+    turn_points.append(getaddress(lat_long[-1][0], lat_long[-1][1], len(lat_long) - 1, apikey))
     # Calculates distances driven on each road
     distances = distance_processor(turn_points)
     # Calculates direction turned at each road change
@@ -49,9 +53,9 @@ def bin_search(turn_points, indices):
     last_ll = lat_long[last]
     mid_ll = lat_long[midpoint]
 
-    first_address = getaddress(first_ll[0], first_ll[1], first)
-    last_address = getaddress(last_ll[0], last_ll[1], last)
-    mid_address = getaddress(mid_ll[0], mid_ll[1], midpoint)
+    first_address = getaddress(first_ll[0], first_ll[1], first, apikey)
+    last_address = getaddress(last_ll[0], last_ll[1], last, apikey)
+    mid_address = getaddress(mid_ll[0], mid_ll[1], midpoint, apikey)
 
     first_street = first_address.street
     last_street = last_address.street
@@ -74,7 +78,7 @@ def distance_processor(turn_points):
         address2 = turn_points[point_index + 1]
         dist = distance(address1, address2)
         distances.append(dist)
-    last_point = getaddress(lat_long[-1][0], lat_long[-1][1], (len(lat_long) - 1))
+    last_point = getaddress(lat_long[-1][0], lat_long[-1][1], (len(lat_long) - 1), apikey)
     distances.append(distance(turn_points[-1], last_point))
     return distances
 
@@ -140,8 +144,8 @@ def direction_calc(address):
     index_behind = ind - 2
     index_ahead = ind + 2
 
-    address_behind = getaddress(lat_long[index_behind][0], lat_long[index_behind][1], index_behind)
-    address_ahead = getaddress(lat_long[index_ahead][0], lat_long[index_ahead][1], index_ahead)
+    address_behind = getaddress(lat_long[index_behind][0], lat_long[index_behind][1], index_behind, apikey)
+    address_ahead = getaddress(lat_long[index_ahead][0], lat_long[index_ahead][1], index_ahead, apikey)
     
     
     utm_behind = ll_to_utm(address_behind)

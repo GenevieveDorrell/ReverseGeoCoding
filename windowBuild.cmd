@@ -5,3 +5,4 @@ py -m venv env
 py -m pip install --upgrade pip
 for /F "tokens=*" %%A in (requirements.txt) do pip install %%A
 pip install 
+python .\getApiKey.py
