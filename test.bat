@@ -1,2 +1,4 @@
-python .\getApiKey.py
-@echo booooooo
+CALL env\Scripts\activate.bat
+.\run.cmd
+
+
