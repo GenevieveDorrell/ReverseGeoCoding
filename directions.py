@@ -115,45 +115,29 @@ def distance(address1, address2):
 def direction_calc(address):
     # Find a point ahead of and a point behind to calculate turn direction
     ind = address.index
-    """
-    if ind - 3 < 0:
+    if ind - 2 < 0:
         index_behind = ind - 1
-    elif ind - 5 < 0:
-            index_behind = ind - 3
-    elif ind - 10 < 0:
-            index_behind = ind - 5
     else:
-        index_behind = ind - 10
-    """
+        index_behind = ind - 2
 
-    """
     max_ind = len(lat_long) - 1
-    if ind + 3 > max_ind:
+    if ind + 2 > max_ind:
         index_ahead = ind + 1
-    elif ind + 5 > max_ind:
-        index_ahead = ind + 3
-    elif ind + 10 > max_ind:
-        index_ahead = ind + 5
     else:
-        index_ahead = ind + 10
-    """
-    index_behind = ind - 2
-    index_ahead = ind + 2
+        index_ahead = ind + 2
 
     address_behind = getaddress(lat_long[index_behind][0], lat_long[index_behind][1], index_behind)
     address_ahead = getaddress(lat_long[index_ahead][0], lat_long[index_ahead][1], index_ahead)
-    
-    
+
     utm_behind = ll_to_utm(address_behind)
     utm_current = ll_to_utm(address)
     utm_ahead = ll_to_utm(address_ahead)
-    
 
     dir = ((utm_current[0]-utm_behind[0]) * (utm_ahead[1]-utm_behind[1])) - ((utm_current[1] - utm_behind[1]) * (utm_ahead[0]-utm_behind[0]))
     twoRoads = address_behind.street.split(';')
     if len(twoRoads) > 1: #checkes to see if change is just from street name change
         if address.street in twoRoads:
-            return "Continue onto"           
+            return "Continue onto"
     if dir > 1:
         return "Turn left"
     elif dir < -1:
