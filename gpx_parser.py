@@ -27,5 +27,5 @@ def get_latlon(input_f):
                 tdeltas.append((point.time - time_1).total_seconds())
 
     # Reduce resolution of data to increase processing speed
-    lat_long = lat_long[0::100]
+    lat_long = lat_long[0::10]
     return lat_long

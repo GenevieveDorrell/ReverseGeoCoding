@@ -1,4 +1,4 @@
-from geoMapping_API import getaddress
+from openMap_API import getaddress
 # Library converting latlon data to universal traverse mercator (UTM)
 import utm
 
@@ -30,6 +30,7 @@ def get_directions(lat_lon):
     address1 = getaddress(lat_long[0][0], lat_long[0][1], 0)
     # Calculates other directions in the cue sheet
     turn_points = bin_search([address1], (0, len(lat_long) - 1))
+    turn_points.append(getaddress(lat_long[-1][0], lat_long[-1][1], len(lat_long) - 1))
     # Calculates distances driven on each road
     distances = distance_processor(turn_points)
     # Calculates direction turned at each road change
@@ -93,7 +94,6 @@ def direction_processor(turn_points, distances):
 
     # Ending point
     last_direction = direction(turn_points[-1].street, "End", distances[-1])
-
     directions.append(last_direction)
 
     return directions
@@ -117,6 +117,7 @@ def distance(address1, address2):
 def direction_calc(address):
     # Find a point ahead of and a point behind to calculate turn direction
     ind = address.index
+    """
     if ind - 3 < 0:
         index_behind = ind - 1
     elif ind - 5 < 0:
@@ -125,7 +126,9 @@ def direction_calc(address):
             index_behind = ind - 5
     else:
         index_behind = ind - 10
+    """
 
+    """
     max_ind = len(lat_long) - 1
     if ind + 3 > max_ind:
         index_ahead = ind + 1
@@ -135,6 +138,9 @@ def direction_calc(address):
         index_ahead = ind + 5
     else:
         index_ahead = ind + 10
+    """
+    index_behind = ind - 2
+    index_ahead = ind + 2
 
     address_behind = getaddress(lat_long[index_behind][0], lat_long[index_behind][1], index_behind)
     address_ahead = getaddress(lat_long[index_ahead][0], lat_long[index_ahead][1], index_ahead)
@@ -144,10 +150,9 @@ def direction_calc(address):
     utm_ahead = ll_to_utm(address_ahead)
 
     dir = ((utm_current[0]-utm_behind[0]) * (utm_ahead[1]-utm_behind[1])) - ((utm_current[1] - utm_behind[1]) * (utm_ahead[0]-utm_behind[0]))
-
-    if dir > 0.01:
+    if dir > 1:
         return "Turn left"
-    elif dir < -0.01:
+    elif dir < -1:
         return "Turn right"
     else:
         return "Go straight"
