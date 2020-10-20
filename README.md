@@ -3,6 +3,11 @@
 ## Info-
 Code Developed for reverse geocoding applications. This entails converting gps points into a cue sheet of directions. 
 
+## Setup-
+TODO
+run the windowBuild.bat or UnixBuild.bash depending on your OS. 
+Then run the run 
+
 ## Usage- 
 TODO
 
@@ -13,11 +18,6 @@ You must have python and pip preinstalled on your computer for the build scripts
 - math
 - numpy
 - flask
-
-## Setup-
-TODO
-run the windowBuild.bat or UnixBuild.bash depending on your OS. 
-Then run the run 
 
 ## Files & Directories-
 * directions.py
