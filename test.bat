@@ -1,1 +1,4 @@
-for /F "tokens=*" %%A in (requirements.txt) do pip install %%A
+ CALL env\Scripts\activate.bat
+CALL run.cmd
+
+
