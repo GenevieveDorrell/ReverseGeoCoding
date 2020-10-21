@@ -23,7 +23,7 @@ You must have python and pip preinstalled on your computer for the build scripts
 * directions.py
 -The main logic file. Calculates all of the streets that the route goes on, as well as distance on each street and turn direction from that street. 
 
-* geomapping_API.py
+* openMap_API.py
 -Connects with the API to retrieve street addresses from the give gps points.
 
 * gpx_parser.py .
@@ -33,13 +33,16 @@ You must have python and pip preinstalled on your computer for the build scripts
 -Contains code for the main web interface of the project.
 
 * static/
+-Contains the css style sheet for the web GUI
 
 * templates/
+-Contians the home html page.
 
 * uploads/
--Contains gpx files that the user uploads for duration of reverse geocoding process.
+-Contains gpx files that the user uploads for duration of reverse geocoding process. Files are delete after use for security reasons. 
 
 * tests/
+-Contians .gpx files that you can use to test your setup.
 
 ## Acknowledgments-
 This project uses reverse geocoding serveces from https://geoservices.tamu.edu/ API to convert latlon data to street addresses. 
