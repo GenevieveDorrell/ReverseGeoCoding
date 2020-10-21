@@ -1,4 +1,4 @@
-CALL env\Scripts\activate.bat
-.\run.cmd
+ CALL env\Scripts\activate.bat
+CALL run.cmd
 
 
