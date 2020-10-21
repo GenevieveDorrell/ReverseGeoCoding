@@ -18,6 +18,7 @@ You must have python and pip preinstalled on your computer for the build scripts
 - math
 - numpy
 - flask
+When you run the build script it will automatically call the run.cmd to call the run.cmd alone you must be in the virtual environment. There is a stop cmd that you can call the exit the virtual environment, alternativly you can also type deactivate.
 
 ## Files & Directories-
 * directions.py
