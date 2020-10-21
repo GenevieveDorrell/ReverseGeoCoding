@@ -4,5 +4,5 @@ py -m venv env
 CALL env\Scripts\activate.bat
 py -m pip install --upgrade pip
 for /F "tokens=*" %%A in (requirements.txt) do pip install %%A
-pip install 
-python .\getApiKey.py
+CALL python .\getApiKey.py 
+CALL run.cmd
