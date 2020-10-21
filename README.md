@@ -5,8 +5,8 @@ Code Developed for reverse geocoding applications. This entails converting gps p
 
 ## Setup-
 TODO
-run the windowBuild.bat or UnixBuild.bash depending on your OS. 
-Then run the run 
+run the windowBuild.bat or UnixBuild.sh depending on your OS. These scripts will put you in the virtual envirinment and start runing the program. To call the run.cmd alone you must be in the virtual environment. On windows the command to reenter the venv after it has already been built is './env\Scripts\activate.bat' and 'source env/bin/activate' for apple. There is a stop.cmd script that you can call to exit the virtual environment, alternativly you can also type deactivate.
+
 
 ## Usage- 
 TODO
@@ -18,7 +18,6 @@ You must have python and pip preinstalled on your computer for the build scripts
 - math
 - numpy
 - flask
-When you run the build script it will automatically call the run.cmd to call the run.cmd alone you must be in the virtual environment. There is a stop cmd that you can call the exit the virtual environment, alternativly you can also type deactivate.
 
 ## Files & Directories-
 * directions.py
