@@ -20,7 +20,7 @@ Note: To call run.cmd alone you must be in the virtual environment.
 This program takes gps data in the form of a .gpx file, either from a bike ride or a walk, and recreates the users route in a cue sheet form. This way you can easily track your routes or build maps of your favorite paths!
 
 ## Requirements-
-You must have python and pip preinstalled on your computer for the build scripts to work. Our web aplication will then install the venv packsge and then install these other third party pachages within the environment. 
+You must have python and pip preinstalled on your computer for the build scripts to work. Our web aplication will then build the virtual environment and install these third party packages within the environment. 
 - utm==0.6.0
 - gpxpy==1.4.2
 - numpy==1.16.4
