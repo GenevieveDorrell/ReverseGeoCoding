@@ -4,19 +4,29 @@
 Code Developed for reverse geocoding applications. This entails converting gps points into a cue sheet of directions. 
 
 ## Setup-
-run the windowBuild.bat or UnixBuild.sh depending on your OS. These scripts will put you in the virtual envirinment and start runing the program. To call the run.cmd alone you must be in the virtual environment. On windows the command to reenter the venv after it has already been built is './env\Scripts\activate.bat' and 'source env/bin/activate' for apple. There is a stop.cmd script that you can call to exit the virtual environment, alternativly you can also type deactivate.
+**Windows**
+1. Run the windowBuild.bat to build a virtual environment and start running the program
+Note: To call run.cmd alone you must be in the virtual environment. 
+2. To reenter the virtual environment after it has been built use './env\Scripts\activate.bat'
+3. Te exit the virual environment type 'deactivate'. Alternative there is a stop.cmd script
 
+**MacOS**
+1. Run UnixBuild.sh ('sh UnixBuild.sh') to build a virtual environment and start running the program
+Note: To call run.cmd alone you must be in the virtual environment. 
+2. To reenter the virtual environment after it has been built use 'source env/bin/activate'
+3. Te exit the virual environment type 'deactivate'. Alternative there is a stop.cmd script
 
 ## Usage- 
-used to take .gpx files and give the user verberbal directions.
+This program takes gps data in the form of a .gpx file, either from a bike ride or a walk, and recreates the users route in a cue sheet form. This way you can easily track your routes or build maps of your favorite paths!
 
 ## Requirements-
 You must have python and pip preinstalled on your computer for the build scripts to work. Our web aplication will then install the venv packsge and then install these other third party pachages within the environment. 
-- utm
-- gpxpy
-- math
-- numpy
-- flask
+- utm==0.6.0
+- gpxpy==1.4.2
+- numpy==1.16.4
+- geopy==2.0.0
+- Flask==1.0.3
+
 
 ## Files & Directories-
 * directions.py
