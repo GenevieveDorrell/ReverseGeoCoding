@@ -4,12 +4,11 @@
 Code Developed for reverse geocoding applications. This entails converting gps points into a cue sheet of directions. 
 
 ## Setup-
-TODO
 run the windowBuild.bat or UnixBuild.sh depending on your OS. These scripts will put you in the virtual envirinment and start runing the program. To call the run.cmd alone you must be in the virtual environment. On windows the command to reenter the venv after it has already been built is './env\Scripts\activate.bat' and 'source env/bin/activate' for apple. There is a stop.cmd script that you can call to exit the virtual environment, alternativly you can also type deactivate.
 
 
 ## Usage- 
-TODO
+used to take .gpx files and give the user verberbal directions.
 
 ## Requirements-
 You must have python and pip preinstalled on your computer for the build scripts to work. Our web aplication will then install the venv packsge and then install these other third party pachages within the environment. 
