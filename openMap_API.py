@@ -4,7 +4,7 @@ from geopy.exc import GeocoderAuthenticationFailure
 
 #this accesses the API resource
 #account balance query
-#
+
 class address:
     def __init__(self, street, lat, lon, index):
         self.street = street
