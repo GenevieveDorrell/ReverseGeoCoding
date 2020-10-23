@@ -4,7 +4,7 @@ from geopy.exc import GeocoderAuthenticationFailure
 
 #this accesses the API resource
 #account balance query
-#
+
 class address:
     def __init__(self, street, lat, lon, index):
         self.street = street
@@ -41,6 +41,3 @@ def getaddress(lat, lon, index, apikey):
     except:
         print("You have an incorrect API or are out of credits to configure a new api key run \'python .\getApiKey.py\'")
         exit(1)
-#print(getaddress(44.587662, -123.256691, 0, 'asdkfjasldf'))
-#print(getaddress(44.589523, -123.262482, 0))
-#print(get_apikey())

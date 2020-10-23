@@ -7,6 +7,7 @@ from directions import get_directions
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'gpx'}
 
+#flask app home base
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
