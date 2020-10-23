@@ -23,7 +23,6 @@ def home():
                 global filename
                 filename = secure_filename(file.filename) # security protocol
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) # save uploaded file
-                flash('we are working on your route please give us a second :)')
                 return redirect(url_for('get_dir'))               
             else:
                 flash('Please Upload a .gpx type file')
