@@ -5,7 +5,7 @@ Code Developed for reverse geocoding applications. This entails converting gps p
 
 ## Setup-
 **Windows**
-1. Run the windowBuild.bat to build a virtual environment and start running the program
+1. Run the windowBuild.bat ('.\windowBuild.bat') to build a virtual environment and start running the program
 Note: To call run.cmd alone you must be in the virtual environment. 
 2. To reenter the virtual environment after it has been built use './env\Scripts\activate.bat'
 3. Te exit the virual environment type 'deactivate'. Alternative there is a stop.cmd script
