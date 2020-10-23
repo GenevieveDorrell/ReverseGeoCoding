@@ -9,12 +9,16 @@ Code Developed for reverse geocoding applications. This entails converting gps p
 Note: To call run.cmd alone you must be in the virtual environment. 
 2. To reenter the virtual environment after it has been built use './env\Scripts\activate.bat'
 3. Te exit the virual environment type 'deactivate'. Alternative there is a stop.cmd script
+4. Once running, go to the hosted web page (ex. http://127.0....) in your web broser
+5. Follow the prompts
 
 **MacOS**
 1. Run UnixBuild.sh ('sh UnixBuild.sh') to build a virtual environment and start running the program
 Note: To call run.cmd alone you must be in the virtual environment. 
 2. To reenter the virtual environment after it has been built use 'source env/bin/activate'
 3. Te exit the virual environment type 'deactivate'. Alternative there is a stop.cmd script
+4. Once running, go to the hosted web page (ex. http://127.0....) in your web broser
+5. Follow the prompts
 
 ## Usage- 
 This program takes gps data in the form of a .gpx file, either from a bike ride or a walk, and recreates the users route in a cue sheet form. This way you can easily track your routes or build maps of your favorite paths!
