@@ -24,7 +24,8 @@ def get_latlon(input_f):
         for segment in tracks.segments:
             for point in segment.points:
                 lat_long.append((point.latitude, point.longitude))
-                tdeltas.append((point.time - time_1).total_seconds())
+                if time_1 != None and point.time != None:
+                    tdeltas.append((point.time - time_1).total_seconds())
 
     # Reduce resolution of data to increase processing speed
     lat_long = lat_long[0::10]

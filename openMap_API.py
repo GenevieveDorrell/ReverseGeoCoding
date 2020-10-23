@@ -32,7 +32,6 @@ def getaddress(lat, lon, index, apikey):
     try:
         loc = str(lat) + ", " + str(lon)
         locator = OpenMapQuest(api_key=apikey)
-        print(locator.reverse(loc))
         location = locator.reverse(loc)
         parsed = location.raw
         addres = parsed['address']
