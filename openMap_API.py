@@ -16,7 +16,6 @@ class address:
         return "street = % s\nlat = % s\nlon = % s\nIndex = % s\n" % (self.street,self.lat,self.lon,self.index)
 
 url = "http://open.mapquestapi.com/geocoding/v1/reverse"
-#our apikey is 15NPW4foGDU81YFkcoMBMLHNkLFFKCXi
 
 def get_apikey():
     try:
@@ -41,6 +40,3 @@ def getaddress(lat, lon, index, apikey):
     except:
         print("You have an incorrect API or are out of credits to configure a new api key run \'python .\getApiKey.py\'")
         exit(1)
-#print(getaddress(44.587662, -123.256691, 0, 'asdkfjasldf'))
-#print(getaddress(44.589523, -123.262482, 0))
-#print(get_apikey())
