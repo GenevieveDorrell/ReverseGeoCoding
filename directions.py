@@ -28,7 +28,7 @@ def get_directions(lat_lon):
     global apikey
     lat_long = lat_lon
     if lat_long != None and len(lat_long) > 0:
-        apikey = get_apikey()        
+        apikey = get_apikey()
         # First diection in cue sheet
         address1 = getaddress(lat_long[0][0], lat_long[0][1], 0, apikey)
         # Calculates other directions in the cue sheet
@@ -135,11 +135,7 @@ def direction_calc(address):
         index_ahead = ind + 2
 
     address_behind = getaddress(lat_long[index_behind][0], lat_long[index_behind][1], index_behind, apikey)
-    
-    print("!!!!!!!!!!!!!!")
-    print(index_ahead)
-    print(max_ind)
-    
+
     address_ahead = getaddress(lat_long[index_ahead][0], lat_long[index_ahead][1], index_ahead, apikey)
 
 
